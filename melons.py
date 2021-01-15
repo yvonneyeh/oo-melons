@@ -20,7 +20,7 @@ class AbstractMelonOrder():
         if order_type == 'international' and qty < 10:
             flat_fee = 3
             base_price = base_price + flat_fee
-            
+
         total = (1 + self.tax) * self.qty * base_price
 
         return total
@@ -49,4 +49,13 @@ class InternationalMelonOrder(AbstractMelonOrder):
     order_type = "international"
 
 
+class GovernmentMelonOrder(DomesticMelonOrder):
+    """A US government melon order"""
+    
+    tax = 0.00
+    passes_inspection = False
 
+    def mark_inspection(passed):
+        """Record the fact that an order has been inspected"""
+
+        self.passes_inspection = passed
