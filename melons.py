@@ -1,3 +1,5 @@
+import random
+
 """Classes for melon orders."""
 class AbstractMelonOrder():
 
@@ -10,6 +12,11 @@ class AbstractMelonOrder():
         self.qty = qty
         self.country_code = country_code
 
+    def get_base_type(self):
+        """Calculate base splurge pricing. """
+        splurge_number = range(5, 10)
+        get_price = random.choice(splurge_number)
+        
     def get_total(self):
         """Calculate price, including tax."""
 
