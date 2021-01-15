@@ -16,15 +16,17 @@ class AbstractMelonOrder():
         """Calculate base splurge pricing. """
         splurge_number = range(5, 10)
         get_price = random.choice(splurge_number)
+
+        return get_price
         
     def get_total(self):
         """Calculate price, including tax."""
 
         base_price = 5
-        if species == christmas_melons:
+        if self.species == 'christmas_melons':
             base_price = 1.5 * base_price
 
-        if order_type == 'international' and qty < 10:
+        if self.order_type == 'international' and self.qty < 10:
             flat_fee = 3
             base_price = base_price + flat_fee
 
@@ -62,7 +64,7 @@ class GovernmentMelonOrder(DomesticMelonOrder):
     tax = 0.00
     passes_inspection = False
 
-    def mark_inspection(passed):
+    def mark_inspection(self, passed):
         """Record the fact that an order has been inspected"""
 
         self.passes_inspection = passed
